@@ -1,3 +1,2 @@
 # UC_DA_PJ
-Testing Repo
-fadas
+Proyecto UC
