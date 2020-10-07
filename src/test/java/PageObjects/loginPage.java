@@ -13,6 +13,11 @@ public class loginPage extends basePage {
         super(driver); //una instancia de la clase que se esta extendiendo extends basepage
     }
 
+    public loginPage(WebDriver driver, String url){
+        super(driver, url+"index.php?route=account/login" );
+
+    }
+
 // todos los elementos se declaran publicos, asi el usuario es capaz de poder utilizar todos estos elementos en muchas clases/testcases distintos
 
     public WebElement setEmailTextBox() {
