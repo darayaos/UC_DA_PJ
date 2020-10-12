@@ -30,10 +30,9 @@ public class baseTest {  //crear funciones globales para poder utilizar en todos
     public void setUpTest(){
         chromeOptions = new ChromeOptions();
         //chromeOptions.addArguments("--headless"); lo ejecutamos headless
-        chromeOptions.addArguments("--start-maximized");//preguntar por que puede ser la razon que no inicia el navegador full screen
+        chromeOptions.addArguments("--window-size=1920,1080");//preguntar por que puede ser la razon que no inicia el navegador full screen
         // solamente funciona con --kiosk pero este me abre full screen
         this.setWebDriverConfiguration(browser, chromeOptions);
-
     }
 
     @AfterTest
