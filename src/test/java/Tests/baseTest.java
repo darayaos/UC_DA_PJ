@@ -6,14 +6,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import io.github.bonigarcia.wdm.WebDriverManager;  //utilizamos el los binarios del webdriver
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeOptions;
+//utilizamos el los binarios del webdriver
 
 public class baseTest {  //crear funciones globales para poder utilizar en todos los test
 
     public WebDriver driver;
     private String browser;
+    public ChromeOptions  chromeOptions;
 
-    public baseTest(String browser){
+    public baseTest(String browser)
+    {
         this.browser = browser;
     }
 
@@ -24,7 +28,12 @@ public class baseTest {  //crear funciones globales para poder utilizar en todos
 
     @BeforeTest
     public void setUpTest(){
-        this.setWebDriverConfiguration(browser);
+        chromeOptions = new ChromeOptions();
+        //chromeOptions.addArguments("--headless"); lo ejecutamos headless
+        chromeOptions.addArguments("--start-maximized");//preguntar por que puede ser la razon que no inicia el navegador full screen
+        // solamente funciona con --kiosk pero este me abre full screen
+        this.setWebDriverConfiguration(browser, chromeOptions);
+
     }
 
     @AfterTest
@@ -32,13 +41,13 @@ public class baseTest {  //crear funciones globales para poder utilizar en todos
         driver.quit();
     }
 
-    private void setWebDriverConfiguration(String browser){
+    private void setWebDriverConfiguration(String browser, ChromeOptions options){
         if(browser.equals("firefox")){
             WebDriverManager.firefoxdriver().setup();
-            driver = new FirefoxDriver();
+            driver = new FirefoxDriver(options);
         }else{
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+            driver = new ChromeDriver(options);
         }
 
 
