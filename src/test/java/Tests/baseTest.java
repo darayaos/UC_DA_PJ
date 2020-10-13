@@ -4,7 +4,9 @@ import io.github.bonigarcia.wdm.managers.FirefoxDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,16 +28,16 @@ public class baseTest {  //crear funciones globales para poder utilizar en todos
         return "https://demo.opencart.com/";
     }
 
-    @BeforeTest
+    @BeforeMethod(alwaysRun = true)
     public void setUpTest(){
         chromeOptions = new ChromeOptions();
         //chromeOptions.addArguments("--headless"); lo ejecutamos headless
-        chromeOptions.addArguments("--window-size=1920,1080");//preguntar por que puede ser la razon que no inicia el navegador full screen
+        chromeOptions.addArguments("--window-size=1920,1080");
         // solamente funciona con --kiosk pero este me abre full screen
         this.setWebDriverConfiguration(browser, chromeOptions);
     }
 
-    @AfterTest
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         driver.quit();
     }
