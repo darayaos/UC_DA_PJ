@@ -8,11 +8,7 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.LoginTest">
-                <methods>
-                    <include name="doLogin" />
-                </methods>
-            </class>
+            <class name="Tests.LoginTest"></class>
         </classes>
     </test>
 </suite>

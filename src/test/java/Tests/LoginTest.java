@@ -29,4 +29,16 @@ public class LoginTest extends baseTest {
         Assert.assertEquals(dashboard.setAccountContainer().isDisplayed(), true);
     }
 
+    @Test(groups = {"sanity"}, dataProvider = "getWrongUsersDataFromJson", dataProviderClass = userDataProvider.class)
+    public void doNotAllowUsersToLogin(loginData _loginData) throws InterruptedException {
+
+        loginPage login = new loginPage(driver, baseURL());
+        waits wait = new waits(driver);
+        dashboardPage dashboard = new dashboardPage(driver);
+
+        login.goToPage();
+        login.doLogin(_loginData.getEmail(), _loginData.getPassword());
+        Assert.assertEquals(login.setWrongCredentialsMessage().isDisplayed(), true);
+    }
+
 }

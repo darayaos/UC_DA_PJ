@@ -16,7 +16,7 @@ public class baseTest {  //crear funciones globales para poder utilizar en todos
 
     public WebDriver driver;
     private String browser;
-    public ChromeOptions  chromeOptions;
+    public ChromeOptions  chromeOptions; //capabilities
 
     public baseTest(String browser)
     {

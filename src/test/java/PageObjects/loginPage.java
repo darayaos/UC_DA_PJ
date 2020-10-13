@@ -8,6 +8,8 @@ public class loginPage extends basePage {
     private By emailTextBox = By.id("input-email");
     private By passwordTextBox = By.id("input-password");
     private By loginButton = By.xpath("//input[@value='Login']");
+    private By wrongCredentialsLabel = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
+
 
     public loginPage(WebDriver driver){
         super(driver); //una instancia de la clase que se esta extendiendo extends basepage
@@ -30,6 +32,10 @@ public class loginPage extends basePage {
 
     public WebElement setLoginButton(){
         return driver.findElement(this.loginButton);
+    }
+
+    public WebElement setWrongCredentialsMessage() {
+        return driver.findElement((this.wrongCredentialsLabel));
     }
 
     public void doLogin(String email, String password) {
